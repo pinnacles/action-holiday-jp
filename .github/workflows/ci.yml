@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install @holiday-jp/holiday_jp
+
+      - uses: actions/github-script@v7
+        id: is-holiday-expected
+        with:
+          script: |
+            const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`)
+            core.setOutput('holiday', holiday_jp.isHoliday(new Date()));
+      - uses: ./
+        id: is-holiday-actual
+      - run: |
+          if [ "${{ steps.is-holiday-expected.outputs.holiday == steps.is-holiday-actual.outputs.is-holiday }}" == true ]; then
+            exit 0
+          else
+            exit 1
+          fi
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: yarn install
+
+      - run: yarn biome format ./src/index.ts

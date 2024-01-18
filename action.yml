@@ -1,0 +1,13 @@
+name: ''
+description: ''
+author: 'Akito Hikasa'
+inputs:
+  date:
+    description: ''
+    required: false
+outputs:
+  is-holiday:
+    description: ''
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
