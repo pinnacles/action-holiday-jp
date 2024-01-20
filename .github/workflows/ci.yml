@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  test1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,27 @@ jobs:
         id: is-holiday-actual
       - run: |
           if [ "${{ steps.is-holiday-expected.outputs.holiday == steps.is-holiday-actual.outputs.is-holiday }}" == true ]; then
+            exit 0
+          else
+            exit 1
+          fi
+
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: ./
+        id: is-holiday-actual
+        with:
+          date: '2024/2/12'
+
+      - run: |
+          if [ "${{ steps.is-holiday-actual.outputs.is-holiday }}" == true ]; then
             exit 0
           else
             exit 1

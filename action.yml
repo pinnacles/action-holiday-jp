@@ -1,9 +1,9 @@
-name: ''
-description: ''
+name: 'action-holiday-jp'
+description: '日本の休日か判定します'
 author: 'Akito Hikasa'
 inputs:
   date:
-    description: ''
+    description: '休日か判定する日付'
     required: false
 outputs:
   is-holiday:
