@@ -14,6 +14,6 @@
     "@biomejs/biome": "1.7.0",
     "@holiday-jp/holiday_jp": "^2.4.0",
     "esbuild": "^0.20.2",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.5"
   }
 }
