@@ -66,3 +66,23 @@ jobs:
       - run: yarn install
 
       - run: yarn biome format ./src/index.ts
+
+  check-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - run: yarn install
+
+      - run: yarn build
+
+      - name: Compare the expected and actual dist/ directories
+        run: |
+          if [ "$(git diff --ignore-space-at-eol dist/ | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after build.  See status below:"
+            exit 1
+          fi
