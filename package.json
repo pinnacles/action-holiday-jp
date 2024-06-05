@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "@actions/core": "^1.10.1",
-    "@biomejs/biome": "1.7.3",
+    "@biomejs/biome": "1.8.0",
     "@holiday-jp/holiday_jp": "^2.4.0",
     "esbuild": "^0.21.4",
     "typescript": "^5.4.5"
