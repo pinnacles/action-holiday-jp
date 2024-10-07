@@ -10,7 +10,7 @@
   "author": "Akito Hikasa",
   "license": "MIT",
   "devDependencies": {
-    "@actions/core": "^1.11.0",
+    "@actions/core": "^1.11.1",
     "@biomejs/biome": "1.9.3",
     "@holiday-jp/holiday_jp": "^2.4.0",
     "esbuild": "^0.24.0",
