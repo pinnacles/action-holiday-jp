@@ -18,7 +18,7 @@ jobs:
 
       - run: npm install @holiday-jp/holiday_jp
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@v8
         id: is-holiday-expected
         with:
           script: |
