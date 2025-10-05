@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.tool-versions'
 
       - run: npm install @holiday-jp/holiday_jp
 
@@ -37,6 +39,8 @@ jobs:
       - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.tool-versions'
 
       - uses: ./
         id: is-holiday-actual
@@ -56,6 +60,8 @@ jobs:
       - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.tool-versions'
 
       - run: bun install
 
@@ -67,6 +73,8 @@ jobs:
       - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.tool-versions'
 
       - run: bun install
 
