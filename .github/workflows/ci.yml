@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v5
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version-file: '.tool-versions'
 
       - run: npm install @holiday-jp/holiday_jp
 
@@ -38,9 +38,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v5
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version-file: '.tool-versions'
 
       - uses: ./
         id: is-holiday-actual
@@ -59,26 +59,26 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v5
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version-file: '.tool-versions'
 
-      - run: yarn install
+      - run: bun install
 
-      - run: yarn biome format ./src/index.ts
+      - run: bun run format
 
   check-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v5
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20.x
+          bun-version-file: '.tool-versions'
 
-      - run: yarn install
+      - run: bun install
 
-      - run: yarn build
+      - run: bun run build
 
       - name: Compare the expected and actual dist/ directories
         run: |
