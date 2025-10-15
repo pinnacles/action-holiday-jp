@@ -4,7 +4,7 @@
   "description": "check is today japan holiday",
   "main": "dist/index.js",
   "scripts": {
-    "build": "esbuild src/index.ts --platform=node --bundle --minify --outfile=dist/index.js",
+    "build": "bun build src/index.ts --target=node --minify --outfile=dist/index.js",
     "format": "biome format --write ./src/index.ts"
   },
   "author": "Akito Hikasa",
@@ -12,8 +12,6 @@
   "devDependencies": {
     "@actions/core": "^1.11.1",
     "@biomejs/biome": "2.2.6",
-    "@holiday-jp/holiday_jp": "^2.5.1",
-    "esbuild": "^0.25.11",
-    "typescript": "^5.9.3"
+    "@holiday-jp/holiday_jp": "^2.5.1"
   }
 }
