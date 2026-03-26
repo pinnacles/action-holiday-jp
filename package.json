@@ -13,7 +13,7 @@
     "@actions/core": "^1.11.1",
     "@biomejs/biome": "2.4.9",
     "@holiday-jp/holiday_jp": "^2.5.1",
-    "esbuild": "^0.27.1",
+    "esbuild": "^0.27.4",
     "typescript": "^6.0.2"
   }
 }
