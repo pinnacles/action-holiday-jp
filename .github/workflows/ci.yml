@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       - run: npm install @holiday-jp/holiday_jp
 
@@ -46,7 +46,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       - uses: ./
         id: is-holiday-actual
@@ -70,7 +70,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       - run: yarn install
 
@@ -86,7 +86,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20.x
+          node-version: 24
 
       - run: yarn install
 
