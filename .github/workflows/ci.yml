@@ -8,10 +8,7 @@ on:
 
 jobs:
   test1:
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - image:ubuntu-7.0
-      - instance-size:medium
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -37,10 +34,7 @@ jobs:
           fi
 
   test2:
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - image:ubuntu-7.0
-      - instance-size:medium
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -61,10 +55,7 @@ jobs:
           fi
 
   lint:
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - image:ubuntu-7.0
-      - instance-size:medium
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -77,10 +68,7 @@ jobs:
       - run: yarn biome format ./src/index.ts
 
   check-build:
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - image:ubuntu-7.0
-      - instance-size:medium
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -101,10 +89,7 @@ jobs:
 
   merge:
     if: github.actor == 'dependabot[bot]' && github.ref_name != 'main'
-    runs-on:
-      - codebuild-github-actions-runner-${{ github.run_id }}-${{ github.run_attempt }}
-      - image:ubuntu-7.0
-      - instance-size:medium
+    runs-on: ubuntu-latest
     needs: [test1, test2, lint, check-build]
     permissions:
       pull-requests: write
