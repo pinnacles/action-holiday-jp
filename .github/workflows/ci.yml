@@ -7,8 +7,14 @@ on:
   pull_request:
 
 jobs:
+  # 今日の日付を JST で判定することを、ランナーのタイムゾーンを変えて確かめる
   test1:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tz: [UTC, Asia/Tokyo, Pacific/Kiritimati, Pacific/Pago_Pago]
+    env:
+      TZ: ${{ matrix.tz }}
     steps:
       - uses: actions/checkout@v7
 
@@ -23,7 +29,8 @@ jobs:
         with:
           script: |
             const holiday_jp = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@holiday-jp/holiday_jp`)
-            core.setOutput('holiday', holiday_jp.isHoliday(new Date()));
+            const [y, m, d] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo' }).format(new Date()).split('-').map(Number);
+            core.setOutput('holiday', holiday_jp.isHoliday(new Date(y, m - 1, d)));
       - uses: ./
         id: is-holiday-actual
       - run: |
